@@ -13,6 +13,9 @@ The uploading interface is protected with basic auth. Set the credentials in you
 
 ## Install
 * Clone the repo.
+* `cd client`
+* `npm i`
+* `cd ../server`
 * `npm i`
 * Copy `env.example.json` to `env.json` and edit the configuration to fit your setup.
 
