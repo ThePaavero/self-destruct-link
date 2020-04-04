@@ -34,7 +34,7 @@ const destroyAll = () => {
 
 // ----------------------------------------------------------------------------------------------------------------
 
-app.use((req, res, next) => {
+/*app.use((req, res, next) => {
 
   const protectedRoutes = ['/', '/upload']
   if (!protectedRoutes.includes(req.path)) {
@@ -50,7 +50,7 @@ app.use((req, res, next) => {
   } else {
     next()
   }
-})
+})*/
 
 app.get('/', (req, res) => res.sendFile(path.join(__dirname + '/../client/index.html')))
 
@@ -69,14 +69,15 @@ app.post('/upload', (req, res) => {
       setTimeout(() => {
         fs.unlinkSync(directory + '/' + file.name)
         fs.rmdirSync(directory)
-        writeToLog(`Destroyed upload with slug "${randomDirSlug}" (had ${ttlInMinutes} minutes to live.)`)
+        const logMessage = `Destroyed upload with slug "${randomDirSlug}" (had ${ttlInMinutes} minutes to live.)`
+        writeToLog(logMessage)
       }, ttlInMinutes * 60000)
       res.send(fs.readFileSync(path.join(__dirname + '/../client/uploaded.html')).toString().replace('[URL]', url))
     })
   }
 )
 
-app.get('/download/:slug', (req, res) => {
+app.get('/download/:slug', async (req, res) => {
   const dir = __dirname + '/uploads/' + req.params.slug
   try {
     const file = fs.readdirSync(dir)[0]
