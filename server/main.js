@@ -1,8 +1,10 @@
 const express = require('express')
 const fs = require('fs')
 const fileUpload = require('express-fileupload')
+const basicAuth = require('express-basic-auth')
 const rimraf = require('rimraf')
 const path = require('path')
+const config = require('./env')
 
 // ----------------------------------------------------------------------------------------------------------------
 
@@ -32,9 +34,28 @@ const destroyAll = () => {
 
 // ----------------------------------------------------------------------------------------------------------------
 
-app.get('/', (req, res) => res.sendFile(path.join(__dirname + '/../client/index.html')))
+const userCredentials = {
+  adminUsername: config.uploadCredentials.username,
+  adminPassword: config.uploadCredentials.password
+}
 
-app.post('/upload', function(req, res) {
+const authUsersObject = {
+  users: {
+    [userCredentials.adminUsername]: userCredentials.adminPassword,
+  },
+  challenge: true,
+  realm: 'Imb4T3st4pp',
+}
+
+// return console.log(JSON.stringify(authUsersObject, null, 2))
+
+app.get('/', basicAuth({
+  authUsersObject
+}), (req, res) => res.sendFile(path.join(__dirname + '/../client/index.html')))
+
+app.post('/upload', basicAuth({
+  authUsersObject
+}), (req, res) => {
   const ttlInMinutes = Number(req.body.ttlInMinutes ? req.body.ttlInMinutes : 1)
   const file = req.files.file
   const randomDirSlug = 'x-' + Math.round(Math.random() * 99999999999)
