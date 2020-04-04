@@ -27,7 +27,9 @@ app.post('/upload', function(req, res) {
 })
 
 app.get('/download/:slug', (req, res) => {
-  res.json(req.params)
+  const dir = __dirname + '/uploads/' + req.params.slug
+  const file = fs.readdirSync(dir)[0]
+  res.sendFile(dir + '/' + file)
 })
 
 app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`))
