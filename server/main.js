@@ -1,7 +1,7 @@
 const express = require('express')
 const fs = require('fs')
 const fileUpload = require('express-fileupload')
-const auth = require('express-basic-auth')
+const auth = require('basic-auth')
 const rimraf = require('rimraf')
 const path = require('path')
 const config = require('./env')
@@ -34,26 +34,27 @@ const destroyAll = () => {
 
 // ----------------------------------------------------------------------------------------------------------------
 
-const authMiddleware = (req, res, next) => {
+app.use((req, res, next) => {
 
-  if (req.path !== '/' && req.path !== '/upload') {
+  const protectedRoutes = ['/', '/upload']
+  if (!protectedRoutes.includes(req.path)) {
     next()
   }
 
-  const user = auth(req)
+  var credentials = auth(req)
 
-  if (user === undefined || user['name'] !== config.uploadCredentials.username || user['pass'] !== config.uploadCredentials.password) {
-    res.statusCode = 401
-    res.setHeader('WWW-Authenticate', 'Basic realm="Node"')
-    res.end('Unauthorized')
+  if (!credentials || credentials.name !== config.uploadCredentials.username || credentials.pass !== config.uploadCredentials.password) {
+    res.status(401)
+    res.header('WWW-Authenticate', 'Basic realm="example"')
+    res.send('Access denied')
   } else {
     next()
   }
-}
+})
 
-app.get('/', authMiddleware, (req, res) => res.sendFile(path.join(__dirname + '/../client/index.html')))
+app.get('/', (req, res) => res.sendFile(path.join(__dirname + '/../client/index.html')))
 
-app.post('/upload', authMiddleware, (req, res) => {
+app.post('/upload', (req, res) => {
     const ttlInMinutes = Number(req.body.ttlInMinutes ? req.body.ttlInMinutes : 1)
     const file = req.files.file
     const randomDirSlug = 'x-' + Math.round(Math.random() * 99999999999)
