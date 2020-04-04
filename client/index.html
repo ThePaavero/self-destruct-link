@@ -16,19 +16,21 @@
       <label>
         <i class="material-icons">add_circle</i>
         <span>
-          Upload your file:
+          Choose your file to upload:
         </span>
         <input type="file" required autofocus name="file" class="custom-file-input"/>
       </label>
     </p>
-    <p>
+    <p class="set-time-para">
       <label>
-        <span>Set time to live in minutes:</span>
+        <span>Set time to live:</span>
+        <i class="material-icons">av_timer</i>
         <input type="number" min="1" value="5" required name="ttlInMinutes"/>
+        <span class="post-label">minutes</span>
       </label>
     </p>
     <p class="upload-cta-area">
-      <input type="submit" value="Upload"/>
+      <input type="submit" value="Upload and get URL"/>
       <span class="icon">
         <i class="material-icons">cloud_upload</i>
       </span>
