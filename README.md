@@ -1,6 +1,7 @@
 # Application for sharing assets with a self destruct functionality
 
 
+![Screenshot](screenshot.jpg)
 
 [Video](https://www.youtube.com/watch?v=yYqq3jaEgU8&feature=youtu.be)
 
