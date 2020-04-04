@@ -1,7 +1,7 @@
 .idea
 node_modules
-server/uploads/
-!uploads/.gitkeep
+server/uploads/*
+!server/uploads/.gitkeep
 server/logs.txt
 env.json
 style.css
