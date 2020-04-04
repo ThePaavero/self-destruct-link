@@ -53,7 +53,9 @@ app.use((req, res, next) => {
   }
 })
 
-app.get('/', (req, res) => res.sendFile(path.join(__dirname + '/../client/index.html')))
+app.get('/', (req, res) => {
+  res.send(fs.readFileSync(path.join(__dirname + '/../client/index.html')).toString().replace('[API_URL]', config.serverBaseUrl))
+})
 
 app.post('/upload', (req, res) => {
     const ttlInMinutes = Number(req.body.ttlInMinutes ? req.body.ttlInMinutes : 1)
