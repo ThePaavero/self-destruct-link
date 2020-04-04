@@ -1,6 +1,7 @@
 $strong: #ddd3b6;
 $weaker: #988782;
 $weak: #2b3057;
+$linkColor: $strong;
 
 * {
   box-sizing: border-box;
@@ -14,6 +15,10 @@ body {
   font-size: 16px;
   background-color: #181c31;
   color: $strong;
+
+  a {
+    color: $linkColor;
+  }
 }
 
 header {
@@ -81,7 +86,9 @@ form {
 .uploaded {
 
   header {
+
     h1 {
+      margin-left: -20px;
       margin-bottom: 20px;
     }
   }
@@ -93,5 +100,19 @@ form {
     border: none;
     cursor: default;
     min-width: 450px;
+  }
+
+  .back-para {
+    margin-top: 40px;
+
+    a {
+      font-size: 1rem;
+
+      i {
+        transform: translateY(10px);
+        margin-right: 7px;
+        font-size: 2rem;
+      }
+    }
   }
 }
