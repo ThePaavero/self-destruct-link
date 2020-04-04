@@ -34,11 +34,12 @@ const destroyAll = () => {
 
 // ----------------------------------------------------------------------------------------------------------------
 
-/*app.use((req, res, next) => {
+app.use((req, res, next) => {
 
   const protectedRoutes = ['/', '/upload']
   if (!protectedRoutes.includes(req.path)) {
     next()
+    return
   }
 
   var credentials = auth(req)
@@ -50,7 +51,7 @@ const destroyAll = () => {
   } else {
     next()
   }
-})*/
+})
 
 app.get('/', (req, res) => res.sendFile(path.join(__dirname + '/../client/index.html')))
 
@@ -71,6 +72,7 @@ app.post('/upload', (req, res) => {
         fs.rmdirSync(directory)
         const logMessage = `Destroyed upload with slug "${randomDirSlug}" (had ${ttlInMinutes} minutes to live.)`
         writeToLog(logMessage)
+        console.log(logMessage)
       }, ttlInMinutes * 60000)
       res.send(fs.readFileSync(path.join(__dirname + '/../client/uploaded.html')).toString().replace('[URL]', url))
     })
