@@ -14,7 +14,7 @@
   <form action="[API_URL]/upload" method="post" enctype="multipart/form-data">
     <p>
       <label>
-        <i class="material-icons">cloud_upload</i>
+        <i class="material-icons">add_circle</i>
         <span>
           Upload your file:
         </span>
@@ -27,8 +27,11 @@
         <input type="number" min="1" value="5" required name="ttlInMinutes"/>
       </label>
     </p>
-    <p>
+    <p class="upload-cta-area">
       <input type="submit" value="Upload"/>
+      <span class="icon">
+        <i class="material-icons">cloud_upload</i>
+      </span>
     </p>
   </form>
 </main>

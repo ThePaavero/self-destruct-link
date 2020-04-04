@@ -50,7 +50,7 @@ form {
     position: relative;
 
     i {
-      font-size: 6rem !important;
+      font-size: 4rem !important;
       margin-left: 10px;
     }
 
@@ -67,6 +67,35 @@ form {
     border: none;
     cursor: default;
     width: 200px;
+  }
+
+  p.upload-cta-area {
+    position: relative;
+
+    input[type="submit"] {
+      border: none;
+      border-radius: 10px;
+      padding: 35px 20px;
+      background-color: #2d761a;
+      color: #fff;
+      font-family: inherit;
+      text-transform: uppercase;
+      font-weight: bold;
+      letter-spacing: 2px;
+      width: 300px;
+      text-align: left;
+    }
+
+    span.icon {
+      position: absolute;
+      left: 220px;
+      top: 50%;
+      transform: translateY(-50%);
+
+      i {
+        font-size: 4rem;
+      }
+    }
   }
 
   input[type="file"] {
