@@ -12,7 +12,8 @@ const port = 4444
 app.get('/', (req, res) => res.sendFile(path.join(__dirname + '/../client/index.html')))
 
 app.post('/upload', function(req, res) {
-  JSON.stringify(req.files, null, 2)
+  const ttlInMinutes = Number(req.body.ttlInMinutes)
+  console.log('ttlInMinutes:' + ttlInMinutes)
   const file = req.files.file
   const randomDirSlug = 'x-' + Math.round(Math.random() * 99999999999)
   const directory = __dirname + '/uploads/' + randomDirSlug
@@ -22,6 +23,11 @@ app.post('/upload', function(req, res) {
       return res.status(500).send(err)
     }
     const url = `http://localhost:${port}/download/${randomDirSlug}`
+    setTimeout(() => {
+      fs.unlinkSync(directory + '/' + file.name)
+      fs.rmdirSync(directory)
+      console.log(`Destroyed upload with slug "${randomDirSlug}"`)
+    }, ttlInMinutes * 60000)
     res.send(fs.readFileSync(path.join(__dirname + '/../client/uploaded.html')).toString().replace('[URL]', url))
   })
 })
