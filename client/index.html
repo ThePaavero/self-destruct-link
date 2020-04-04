@@ -8,7 +8,7 @@
 </head>
 <body>
 <header>
-  <h1>Upload</h1>
+  <h1>Upload <small>(Hit enter on load to select a file)</small></h1>
 </header>
 <main>
   <form action="[API_URL]/upload" method="post" enctype="multipart/form-data">
@@ -23,7 +23,7 @@
     </p>
     <p>
       <label>
-        <span>Set time to live (in minutes)</span>
+        <span>Set time to live in minutes:</span>
         <input type="number" min="1" value="5" required name="ttlInMinutes"/>
       </label>
     </p>

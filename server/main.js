@@ -77,7 +77,7 @@ app.post('/upload', (req, res) => {
         writeToLog(logMessage)
         console.log(logMessage)
       }, ttlInMinutes * 60000)
-      res.send(fs.readFileSync(path.join(__dirname + '/../client/uploaded.html')).toString().replace('[URL]', url))
+      res.send(fs.readFileSync(path.join(__dirname + '/../client/uploaded.html')).toString().replace(/\[API_URL]/g, config.serverBaseUrl).replace('[URL]', url))
     })
   }
 )
