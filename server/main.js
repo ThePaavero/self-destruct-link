@@ -13,7 +13,7 @@ const app = express()
 app.use(express.static('public'))
 app.use(fileUpload())
 
-const port = 4444
+const port = config.port
 
 const logFilePath = __dirname + '/logs.txt'
 if (!fs.existsSync(logFilePath)) {
