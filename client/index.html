@@ -5,7 +5,14 @@
 </head>
 <body>
 <main>
-  [File upload here]
+  <form action="http://localhost:4444/upload" method="post" enctype="multipart/form-data">
+    <p>
+      <input type="file" required autofocus name="file"/>
+    </p>
+    <p>
+      <input type="submit" value="Upload"/>
+    </p>
+  </form>
 </main>
 </body>
 </html>
