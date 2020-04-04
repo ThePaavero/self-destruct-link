@@ -81,6 +81,7 @@ app.get('/download/:slug', (req, res) => {
   try {
     const file = fs.readdirSync(dir)[0]
     writeToLog(`User downloaded file "${file}"`)
+    console.log(`User downloaded file "${file}"`)
     res.sendFile(dir + '/' + file)
   } catch (e) {
     res.status(404).send('URL has expired.')
