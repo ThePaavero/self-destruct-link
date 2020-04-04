@@ -34,13 +34,14 @@ const destroyAll = () => {
 
 // ----------------------------------------------------------------------------------------------------------------
 
-app.use((req, res, next) => {
+const authMiddleware = (req, res, next) => {
 
   if (req.path !== '/' && req.path !== '/upload') {
     next()
   }
 
-  let user = auth(req)
+  const user = auth(req)
+
   if (user === undefined || user['name'] !== config.uploadCredentials.username || user['pass'] !== config.uploadCredentials.password) {
     res.statusCode = 401
     res.setHeader('WWW-Authenticate', 'Basic realm="Node"')
@@ -48,11 +49,11 @@ app.use((req, res, next) => {
   } else {
     next()
   }
-})
+}
 
-app.get('/', (req, res) => res.sendFile(path.join(__dirname + '/../client/index.html')))
+app.get('/', authMiddleware, (req, res) => res.sendFile(path.join(__dirname + '/../client/index.html')))
 
-app.post('/upload', (req, res) => {
+app.post('/upload', authMiddleware, (req, res) => {
     const ttlInMinutes = Number(req.body.ttlInMinutes ? req.body.ttlInMinutes : 1)
     const file = req.files.file
     const randomDirSlug = 'x-' + Math.round(Math.random() * 99999999999)
