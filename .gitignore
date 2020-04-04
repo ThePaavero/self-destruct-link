@@ -2,3 +2,4 @@
 node_modules
 server/uploads/
 !uploads/.gitkeep
+server/logs.txt
