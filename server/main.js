@@ -95,4 +95,4 @@ app.get('/download/:slug', async (req, res) => {
 })
 
 destroyAll()
-app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`))
+app.listen(port, () => console.log(`Self destruct link generator listening at http://localhost:${port}`))
