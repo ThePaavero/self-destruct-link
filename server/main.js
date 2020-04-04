@@ -1,16 +1,17 @@
 const express = require('express')
 const fs = require('fs')
 const fileUpload = require('express-fileupload')
-
 const path = require('path')
 
+// ----------------------------------------------------------------------------------------------------------------
+
 const app = express()
+
 app.use(fileUpload())
 
 const port = 4444
 
 const logFilePath = __dirname + '/logs.txt'
-
 if (!fs.existsSync(logFilePath)) {
   fs.writeFileSync(logFilePath, '')
 }
@@ -19,6 +20,8 @@ const writeToLog = (message) => {
   const timestamp = new Date().toDateString()
   fs.appendFileSync(logFilePath, `${timestamp}: ${message}\n`)
 }
+
+// ----------------------------------------------------------------------------------------------------------------
 
 app.get('/', (req, res) => res.sendFile(path.join(__dirname + '/../client/index.html')))
 
