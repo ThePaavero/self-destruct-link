@@ -10,6 +10,7 @@ const config = require('./env')
 
 const app = express()
 
+app.use(express.static('public'))
 app.use(fileUpload())
 
 const port = 4444
@@ -54,7 +55,7 @@ app.use((req, res, next) => {
 })
 
 app.get('/', (req, res) => {
-  res.send(fs.readFileSync(path.join(__dirname + '/../client/index.html')).toString().replace('[API_URL]', config.serverBaseUrl))
+  res.send(fs.readFileSync(path.join(__dirname + '/../client/index.html')).toString().replace(/\[API_URL]/g, config.serverBaseUrl))
 })
 
 app.post('/upload', (req, res) => {
