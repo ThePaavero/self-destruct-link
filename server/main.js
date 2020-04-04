@@ -23,8 +23,9 @@ const writeToLog = (message) => {
 }
 
 const destroyAll = () => {
-  rimraf(__dirname + '/uploads/**/*')
-  writeToLog('Destroyed all files because of boot.')
+  rimraf(__dirname + '/uploads/**/*', () => {
+    writeToLog('Destroyed all files because of boot.')
+  })
 }
 
 // ----------------------------------------------------------------------------------------------------------------
