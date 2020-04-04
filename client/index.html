@@ -4,14 +4,18 @@
   <title>Self Destruct Link - Upload</title>
   <link rel="stylesheet" href="[API_URL]/styles/style.css">
   <link href="https://fonts.googleapis.com/css2?family=Asap:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
 <main>
   <form action="[API_URL]/upload" method="post" enctype="multipart/form-data">
     <p>
       <label>
-        <span>Upload your file:</span>
-        <input type="file" required autofocus name="file"/>
+        <i class="material-icons">cloud_upload</i>
+        <span>
+          Upload your file:
+        </span>
+        <input type="file" required autofocus name="file" class="custom-file-input"/>
       </label>
     </p>
     <p>
