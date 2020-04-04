@@ -1,6 +1,7 @@
 const express = require('express')
 const fs = require('fs')
 const fileUpload = require('express-fileupload')
+const rimraf = require('rimraf')
 const path = require('path')
 
 // ----------------------------------------------------------------------------------------------------------------
@@ -19,6 +20,11 @@ if (!fs.existsSync(logFilePath)) {
 const writeToLog = (message) => {
   const timestamp = new Date().toDateString()
   fs.appendFileSync(logFilePath, `${timestamp}: ${message}\n`)
+}
+
+const destroyAll = () => {
+  rimraf(__dirname + '/uploads/**/*')
+  writeToLog('Destroyed all files because of boot.')
 }
 
 // ----------------------------------------------------------------------------------------------------------------
@@ -57,4 +63,5 @@ app.get('/download/:slug', (req, res) => {
   }
 })
 
+destroyAll()
 app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`))
