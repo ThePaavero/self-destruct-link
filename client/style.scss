@@ -10,7 +10,6 @@ $linkColor: $strong;
 }
 
 body {
-  margin: 5vh 5vw;
   font-family: 'Asap', sans-serif;
   font-size: 16px;
   background-color: #181c31;
@@ -21,10 +20,15 @@ body {
   }
 }
 
+header,
+main {
+  margin: 5vh 5vw;
+}
+
 header {
-  margin-left: 20px;
 
   h1 {
+    margin-left: 20px;
     font-size: 3rem;
 
     small {
@@ -34,7 +38,17 @@ header {
   }
 }
 
+.top-banner {
+  color: $weaker;
+  padding: 5vh 6vw;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
 form {
+  margin-top: -50px;
 
   p {
     border-bottom: solid 1px $weak;
