@@ -34,8 +34,12 @@ app.post('/upload', function(req, res) {
 
 app.get('/download/:slug', (req, res) => {
   const dir = __dirname + '/uploads/' + req.params.slug
-  const file = fs.readdirSync(dir)[0]
-  res.sendFile(dir + '/' + file)
+  try {
+    const file = fs.readdirSync(dir)[0]
+    res.sendFile(dir + '/' + file)
+  } catch (e) {
+    res.status(404).send('URL has expired.')
+  }
 })
 
 app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`))
