@@ -14,6 +14,14 @@ body {
   color: $cream;
 }
 
+header {
+  margin-left: 20px;
+
+  h1 {
+    font-size: 3rem;
+  }
+}
+
 form {
 
   p {
@@ -36,7 +44,17 @@ form {
 
     span {
       display: block;
+      margin: 15px 0;
     }
+  }
+
+  input[type="number"] {
+    padding: 10px;
+    font-size: 2rem;
+    border-radius: 10px;
+    border: none;
+    cursor: default;
+    width: 200px;
   }
 
   input[type="file"] {
