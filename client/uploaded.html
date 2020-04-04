@@ -6,9 +6,17 @@
   <link href="https://fonts.googleapis.com/css2?family=Asap:wght@400;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
-<body>
+<body class="uploaded">
 <main>
-  <span>[URL]</span>
+  <header>
+    <h1>File uploaded <small>Copy the selected URL to share it</small></h1>
+  </header>
+  <input type="text" value="[URL]" autofocus/>
 </main>
+<script>
+  (() => {
+    document.querySelector('input').select()
+  })()
+</script>
 </body>
 </html>

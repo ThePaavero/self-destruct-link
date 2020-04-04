@@ -77,3 +77,21 @@ form {
     }
   }
 }
+
+.uploaded {
+
+  header {
+    h1 {
+      margin-bottom: 20px;
+    }
+  }
+
+  input {
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 10px;
+    border: none;
+    cursor: default;
+    min-width: 450px;
+  }
+}
