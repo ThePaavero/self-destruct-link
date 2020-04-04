@@ -4,3 +4,4 @@ server/uploads/
 !uploads/.gitkeep
 server/logs.txt
 env.json
+style.css

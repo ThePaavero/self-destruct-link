@@ -10,7 +10,7 @@ const config = require('./env')
 
 const app = express()
 
-app.use(express.static('public'))
+app.use('/../client/static', express.static(__dirname + '/public'))
 app.use(fileUpload())
 
 const port = 4444
