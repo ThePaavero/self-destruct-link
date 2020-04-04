@@ -9,7 +9,7 @@
 It enables you to upload files to your server that will be deleted after a given time period.
 The application generates a URL that you can copy and share.
 
-The uploading interface is protected with basic auth. Set the credentials in your env.json.
+The uploading interface is protected with basic auth. Set the credentials in your `env.json`.
 
 ## Install
 * Clone the repo.
