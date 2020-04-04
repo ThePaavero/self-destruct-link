@@ -3,7 +3,7 @@
 
 ![Screenshot](screenshot.jpg)
 
-[Video](https://www.youtube.com/watch?v=yYqq3jaEgU8&feature=youtu.be)
+[Watch a short video of how it works](https://www.youtube.com/watch?v=yYqq3jaEgU8&feature=youtu.be)
 
 ## What does it do?
 It enables you to upload files to your server that will be deleted after a given time period.
